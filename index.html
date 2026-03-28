@@ -418,7 +418,7 @@
       footer { padding: 2rem 1.5rem; }
       .donate-box { padding: 1.8rem; }
     }
-    /* ── SNS ── */
+/* ── SNS ── */
 #sns {
   background: var(--black);
   border-top: 1px solid var(--border);
@@ -426,6 +426,45 @@
 .sns-wrap {
   display: flex;
   justify-content: flex-start;
+}
+.sns-card {
+  display: block;
+  max-width: 480px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.sns-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.sns-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.sns-card-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+.sns-card-handle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+.sns-x-icon {
+  margin-left: auto;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+.sns-card-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
 }
   </style>
 </head>
@@ -504,20 +543,21 @@
 <!-- X / TWITTER -->
 <section id="sns">
   <p class="section-label fade-in">Latest Posts</p>
-  <h2 class="section-title fade-in">X（旧Twitter）</h2>
+  <h2 class="section-title fade-in">X / 最新情報</h2>
   <div class="divider"></div>
-  <div class="sns-wrap fade-in">
-    <a class="twitter-timeline"
-       data-lang="ja"
-       data-width="600"
-       data-height="600"
-       data-theme="light"
-       data-chrome="nofooter noborders"
-       href="https://twitter.com/NABISUB_PJ">
-      @NABISUB_PJのツイートを読み込み中...
-    </a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </div>
+<div class="sns-wrap fade-in">
+  <a href="https://x.com/NABISUB_PJ" target="_blank" class="sns-card">
+    <div class="sns-card-header">
+      <img src="N_A_B_I_logo.png" style="height:40px;width:40px;border-radius:50%;object-fit:cover;">
+      <div>
+        <div class="sns-card-name">信教二世遊説隊 N.A.B.I</div>
+        <div class="sns-card-handle">@NABISUB_PJ</div>
+      </div>
+      <span class="sns-x-icon">𝕏</span>
+    </div>
+    <p class="sns-card-text">N.A.B.Iの最新の活動情報や声明はXで発信しています。フォローしてご覧ください。</p>
+  </a>
+</div>
   <div class="videos-more fade-in" style="margin-top:2rem;">
     <a href="https://x.com/NABISUB_PJ" target="_blank" class="btn btn-outline">Xをフォローする →</a>
   </div>
