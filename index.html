@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N.A.B.I. | 信教二世遊説隊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #f6f8fb;
+      --dark: #edf0f7;
+      --panel: #ffffff;
+      --border: #cdd5e3;
+      --accent: #1e3a6e;
+      --accent-gold: #c8922a;
+      --accent2: #152b52;
+      --white: #0f1c3f;
+      --muted: #5a6a85;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Noto Sans JP', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(245,247,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 6rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-logo-wrap {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .hero-logo-img {
+      width: clamp(260px, 38vw, 520px);
+      height: auto;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 75% 45%, rgba(200,146,42,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 20% 70%, rgba(30,58,110,0.10) 0%, transparent 70%),
+        var(--black);
+    }
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-right: 0.8rem;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      position: relative;
+      margin-bottom: 0.2rem;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--muted);
+      max-width: 480px;
+      margin-top: 1.5rem;
+      position: relative;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent2); border-color: var(--accent2); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--white); }
+
+    .hero-scroll {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 4rem;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.3; transform: scaleY(0.5); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2.5rem; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: 0.05em;
+      line-height: 1;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .stat {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--accent-gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── VIDEOS ── */
+    #videos {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+    }
+    .video-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .video-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-label {
+      padding: 1rem 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      border-top: 1px solid var(--border);
+    }
+    .videos-more {
+      margin-top: 2.5rem;
+    }
+
+    /* ── DONATE ── */
+    #donate {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+    }
+    .donate-box {
+      max-width: 680px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+    .donate-lead {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+    .bank-info {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .bank-info-title {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .bank-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .bank-row:last-child { border-bottom: none; }
+    .bank-key {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      min-width: 120px;
+    }
+    .bank-val { font-weight: 700; color: var(--white); }
+    .donate-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--accent2);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo img { height: 52px; width: auto; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      width: 100%;
+    }
+
+    /* ── DIVIDER LINE ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      opacity: 0.3;
+      margin: 1rem 0 3rem;
+    }
+
+    /* ── FADE IN ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 0 1.5rem 4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .donate-box { padding: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <img src="N_A_B_I_logo.png" alt="N.A.B.I." style="height:44px; width:auto; display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#donate">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-logo-wrap fade-in">
+      <img src="N_A_B_I_logo.png" alt="N.A.B.I." class="hero-logo-img">
+    </div>
+    <p class="hero-tag">信教二世遊説隊</p>
+    <h1 class="hero-title">N.<span>A</span>.B.<span>I</span>.</h1>
+    <p class="hero-subtitle">
+      私たちは、信仰を持つ二世として、宗教の自由と人権を守るために声を上げ続けます。
+    </p>
+    <div class="hero-cta">
+      <a href="#videos" class="btn btn-primary">動画を見る</a>
+      <a href="#donate" class="btn btn-outline">支援する</a>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label fade-in">About Us</p>
+    <h2 class="section-title fade-in">私たちについて</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>
+          N.A.B.I.（信教二世遊説隊）は、信仰を持つ宗教二世たちが集まり、
+          宗教の自由・信仰の自由・人権という普遍的な価値を社会に訴えていくための
+          メディア活動団体です。
+        </p>
+        <p>
+          YouTubeチャンネルを通じて、政府による宗教法人解散命令問題、
+          信教の自由をめぐる国内外の動向について、当事者の視点から
+          情報を発信しています。
+        </p>
+        <p>
+          私たちは偏見や先入観ではなく、事実と対話に基づいて
+          社会に問いかけていきます。
+        </p>
+      </div>
+      <div class="about-stats fade-in">
+        <div class="stat">
+          <div class="stat-num">二世</div>
+          <div class="stat-label">当事者による発信</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">YouTube</div>
+          <div class="stat-label">メディア活動</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">自由</div>
+          <div class="stat-label">信教の自由を守る</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <p class="section-label fade-in">Latest Videos</p>
+    <h2 class="section-title fade-in">動画</h2>
+    <div class="divider"></div>
+    <div class="videos-grid">
+      <!-- ↓ YouTube動画 -->
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/QEdPTtxE30Y" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-label">最新動画 #1</div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/C9DCwusUaDI" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-label">最新動画 #2</div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Vz_vfTeqmpw" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-label">最新動画 #3</div>
+      </div>
+    </div>
+    <div class="videos-more fade-in">
+      <a href="https://www.youtube.com/@N.A.B.I.Project" target="_blank" class="btn btn-outline">
+        YouTubeチャンネルへ →
+      </a>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate">
+    <p class="section-label fade-in">Support Us</p>
+    <h2 class="section-title fade-in">活動を支援する</h2>
+    <div class="divider"></div>
+    <div class="donate-box fade-in">
+      <p class="donate-lead">
+        N.A.B.I.の活動は、皆さまの温かいご支援によって支えられています。
+        動画制作・遊説活動・広報活動のために、ご支援をよろしくお願いいたします。
+      </p>
+      <div class="bank-info">
+        <p class="bank-info-title">銀行振込先（ソニー銀行）</p>
+        <div class="bank-row">
+          <span class="bank-key">銀行名</span>
+          <span class="bank-val">ソニー銀行</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">支店名</span>
+          <span class="bank-val">【支店名を入力】</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">口座種別</span>
+          <span class="bank-val">普通</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">口座番号</span>
+          <span class="bank-val">【口座番号を入力】</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">口座名義</span>
+          <span class="bank-val">【口座名義を入力】</span>
+        </div>
+      </div>
+      <p class="donate-note">
+        ※ 振込手数料はご負担いただく場合がございます。<br>
+        ※ 領収書等が必要な場合は、お問い合わせください。<br>
+        ※ いただいたご支援は活動費（動画制作・交通費・広報費）に充てさせていただきます。
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="N_A_B_I_logo_white.png" alt="N.A.B.I.">
+    </div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@N.A.B.I.Project" target="_blank">YouTube</a>
+      <a href="#about">About</a>
+      <a href="#donate">Support</a>
+    </div>
+    <p class="footer-copy">© 2025 信教二世遊説隊 N.A.B.I. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
