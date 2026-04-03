@@ -429,6 +429,55 @@
       footer { padding: 2rem 1.5rem; }
       .donate-box { padding: 1.8rem; }
     }
+    
+    /* ── STORY ── */
+#story {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+}
+.story-timeline {
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+.story-chapter {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.story-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--accent-gold);
+  line-height: 1;
+  opacity: 0.6;
+}
+.story-heading {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+.story-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.9;
+}
+@media (max-width: 768px) {
+  .story-chapter {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .story-num {
+    font-size: 2.5rem;
+  }
+}
+    
 /* ── SNS ── */
 #sns {
   background: var(--black);
@@ -488,6 +537,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#story">Story</a></li>
       <li><a href="#sns">SNS</a></li>
       <li><a href="#videos">Videos</a></li>
       <li><a href="#donate">Support</a></li>
@@ -513,6 +563,86 @@
     <div class="hero-scroll">Scroll</div>
   </section>
 
+  <!-- STORY -->
+<section id="story">
+  <p class="section-label fade-in">Our Story</p>
+  <h2 class="section-title fade-in">私たちの歩み</h2>
+  <div class="divider"></div>
+
+  <div class="story-timeline">
+
+    <!-- Chapter 1 -->
+    <div class="story-chapter fade-in">
+      <div class="story-num">01</div>
+      <div class="story-body">
+        <h3 class="story-heading">声を奪われた日から、声を上げる日へ</h3>
+        <p class="story-text">
+          2022年7月8日、安倍元首相銃撃事件を機に、私たちを取り巻く環境は一変しました。
+          連日の報道の中で「宗教二世＝被害者」という一面的なイメージが社会に広がり、
+          信仰をもって生きる私たちの声は、どこにも届かなくなっていきました。
+        </p>
+        <p class="story-text">
+          2025年3月25日、東京地裁が家庭連合に対する解散命令を下した日、
+          私たちは決意しました。「このまま黙っていてはいけない」と。
+          信教の自由と、二世たちの居場所を守るために、街頭に立ち、声を上げると。
+        </p>
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="story-chapter fade-in">
+      <div class="story-num">02</div>
+      <div class="story-body">
+        <h3 class="story-heading">N.A.B.I 誕生——蝶のように、自由に</h3>
+        <p class="story-text">
+          「N.A.B.I」には「自由に羽ばたく蝶」という願いを込めました。
+          Next-generation Alliance of Belief and Intercession——
+          誰かの悪意によって信教の自由が踏みにじられることのないよう、
+          蝶のように軽やかに、自由に、信仰を持って生きていける未来を目指して。
+          代表・影山権龍のもと、私たちは動き出しました。
+        </p>
+      </div>
+    </div>
+
+    <!-- Chapter 3 -->
+<div class="story-chapter fade-in">
+  <div class="story-num">03</div>
+  <div class="story-body">
+    <h3 class="story-heading">2025年GW——国会議事堂前に、76名が集結</h3>
+    <p class="story-text">
+      2025年5月4日〜6日、私たちは国会議事堂前をはじめ都内12箇所以上で初めての遊説を行いました。
+      全国から76名の信教二世が集まり、それぞれの言葉でマイクを握りました。
+      夜遅くまで練習を重ね、緊張で足を震わせながらも、ひとりひとりが自分の声で語り始めました。
+    </p>
+    <p class="story-text">
+      道行く人が足を止め、「二世は被害者ばかりだと思っていたが、違うのだね」と言葉をかけてくれました。
+      そして最終日——雨が降りしきる中、全国から<strong style="color: var(--accent-gold);">200名</strong>の信教二世が
+      国会議事堂前に集結し、世論と政治に向けて「私たちの声」を届けました。
+    </p>
+  </div>
+</div>
+
+    <!-- Chapter 4 -->
+    <div class="story-chapter fade-in">
+      <div class="story-num">04</div>
+      <div class="story-body">
+        <h3 class="story-heading">そして今——502名が、全国で声を上げている</h3>
+        <p class="story-text">
+          あの国会議事堂前の一歩から、NABIの輪は広がり続けました。
+          今では全国で<strong style="color: var(--accent-gold); font-size: 1.1em;">502名</strong>の信教二世が、
+          それぞれの地域でNABIとして声を上げてくれるようになりました。
+        </p>
+        <p class="story-text">
+          批判ではなく「証し」を。分断ではなく「対話」を。
+          その信念のもとに集まった500名を超える仲間たちと共に、
+          私たちはこれからも歩み続けます。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
   <!-- ABOUT -->
   <section id="about">
     <p class="section-label fade-in">About Us</p>
